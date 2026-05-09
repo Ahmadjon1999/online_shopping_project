@@ -8,12 +8,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = Env()
 env.read_env()
 
+DEBUG         = env.bool('DEBUG', False)
 
-SECRET_KEY =env.str('SECRET_KEY')
-
-DEBUG =env.bool('DEBUG', False)
+SECRET_KEY    = env.str('SECRET_KEY')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOST')
+# AUTH_USER_MODEL = 'app_one.CustomUser'
+AUTH_USER_MODEL = 'app_one.User'
 
 
 # Application definition
@@ -25,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_one'
+    'app_one',
+    'phonenumber_field',
+    'phonenumbers',
 ]
 
 MIDDLEWARE = [
@@ -65,18 +68,18 @@ if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME'  : BASE_DIR / 'db.sqlite3',
         }
     }
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'DB_NAME':env.str('DB_NAME'),
-            'DB_USER':env.str('DB_USER'),
-            'DB_HOST':env.str("DB_HOST"),
-            'DB_PORT':env.int('DB_PORT'),
-            'PASSWORD':env.str('PASSWORD')
+            'ENGINE'  :'django.db.backends.postgresql',
+            'DB_NAME' : env.str('DB_NAME'),
+            'DB_USER' : env.str('DB_USER'),
+            'DB_HOST' : env.str("DB_HOST"),
+            'DB_PORT' : env.int('DB_PORT'),
+            'PASSWORD': env.str('PASSWORD')
         }
     }
 

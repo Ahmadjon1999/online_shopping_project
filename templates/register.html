@@ -1,0 +1,54 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="absolute w-full h-full flex flex-col items-center justify-center bg-zinc-800">
+   <form method="post" action="" class="shadow-2xl border border-zinc-700 bg-zinc-900 rounded-2xl py-8 px-8 flex flex-col gap-4 w-full max-w-md">
+    {% csrf_token %}
+
+    <h1 class="font-bold text-zinc-100 mb-4 text-center text-3xl">Ro'yxatdan o'tish</h1>
+
+
+    {% if messages %}
+       {% for message in messages %}
+           <div class="bg-red-500/10 border border-red-500 rounded-lg py-2">
+               <p class="text-red-500 font-semibold text-center text-sm">{{ message }}</p>
+           </div>
+       {% endfor %}
+    {% endif %}
+
+    <div class="flex gap-2">
+        <input required type="text" name="first_name" placeholder="Ism"
+               class="w-1/2 focus:outline-none bg-zinc-800 border border-zinc-600 rounded-lg py-3 px-4 text-zinc-100 focus:border-yellow-500 transition placeholder:text-zinc-500" autofocus>
+
+        <input required type="text" name="last_name" placeholder="Familiya"
+               class="w-1/2 focus:outline-none bg-zinc-800 border border-zinc-600 rounded-lg py-3 px-4 text-zinc-100 focus:border-yellow-500 transition placeholder:text-zinc-500">
+    </div>
+
+
+    <input required type="text" name="phone_number" placeholder="Tel raqami (masalan: +998991234567)"
+           class="focus:outline-none bg-zinc-800 border border-zinc-600 rounded-lg py-3 px-4 text-zinc-100 focus:border-yellow-500 transition placeholder:text-zinc-500">
+
+
+    <input required type="password" name="password1" placeholder="Yangi parol"
+           class="focus:outline-none bg-zinc-800 border border-zinc-600 rounded-lg py-3 px-4 text-zinc-100 focus:border-yellow-500 transition placeholder:text-zinc-500">
+
+
+    <input required type="password" name="password2" placeholder="Parolni tasdiqlang"
+           class="focus:outline-none bg-zinc-800 border border-zinc-600 rounded-lg py-3 px-4 text-zinc-100 focus:border-yellow-500 transition placeholder:text-zinc-500">
+
+
+    <button type="submit"
+            class="mt-4 py-3 px-4 bg-yellow-500 rounded-lg text-xl font-bold text-zinc-900 hover:bg-yellow-400 active:scale-95 transition cursor-pointer shadow-lg shadow-yellow-500/20">
+        Ro'yxatdan o'tish
+    </button>
+
+
+    <small class="w-full text-zinc-400 justify-center text-[16px] mt-2 flex flex-row gap-2">
+        Akkauntingiz bormi?
+        <a href="{% url 'login' %}" class="text-yellow-500 hover:text-yellow-400 font-medium transition underline underline-offset-4">
+            Kirish
+        </a>
+    </small>
+</form>
+</div>
+{% endblock content %}

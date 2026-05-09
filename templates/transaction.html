@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="mx-auto max-w-[1020px] mt-10 p-6 border-2 border-black shadow-lg shadow-green-500 rounded-2xl bg-black/40 backdrop-blur-md">
+
+    <div class="flex justify-between items-center mb-8 border-b border-green-900 pb-4">
+        <h1 class="text-green-500 text-4xl font-bold flex items-center gap-3">
+            <span class="material-icons text-4xl">history</span>
+            Xaridlar Tarixi
+        </h1>
+        <a href="{% url 'products' %}" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-all active:scale-95">
+            <span class="material-icons">shopping_cart</span>
+            Maxsulotlar saxifasiga qaytish
+        </a>
+        <a class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all active:scale-95" href="{% url 'delete_transactions' %}">Tarixni tozalash</a>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b border-green-800 text-green-400 text-lg">
+                    <th class="py-3 px-4">Buyurtma ID</th>
+                    <th class="py-3 px-4"><Mahsulot></Mahsulot></th>
+                    <th class="py-3 px-4 text-center">Xarid vaqti</th>
+                    <th class="py-3 px-4 text-right">Sarflangan pul</th>
+                </tr>
+            </thead>
+            <tbody class="text-green-100 divide-y divide-green-900/30">
+                {% for transaction in request.user.transaction_set.all %}
+                    <tr class="hover:bg-green-500/10 transition-colors">
+                        <td class="py-4 px-4 font-mono text-sm text-gray-500">
+                            #{{ transaction.id|stringformat:"s"|slice:"-8:" }}
+                        </td>
+                        <td class="py-4 px-4 font-semibold">
+                            {{ transaction.product_name }}
+                        </td>
+                        <td class="py-4 px-4 text-center text-gray-400 text-sm">
+                            {{ transaction.created|date:"Y-m-d H:i" }}
+                        </td>
+                        <td class="py-4 px-4 text-right text-yellow-400 font-bold text-lg">
+                            ${{ transaction.amount }}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="py-12 text-center text-gray-500 text-xl">
+                            <span class="material-icons text-5xl block mb-2 text-green-900">receipt_long</span>
+                            Sizda hali xaridlar amalga oshirilmagan.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

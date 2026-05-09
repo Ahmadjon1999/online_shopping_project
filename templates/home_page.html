@@ -1,0 +1,68 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="flex flex-col min-h-[calc(100vh-100px)] justify-center py-4">
+    <div class="relative overflow-hidden bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-800 p-8 md:p-12 text-center">
+
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-green-500/10 blur-[100px] rounded-full"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-yellow-500/10 blur-[100px] rounded-full"></div>
+
+        <div class="relative z-10">
+            <div class="mb-4 inline-flex items-center justify-center w-16 h-16 bg-zinc-800 rounded-2xl border border-zinc-700 shadow-inner">
+                <span class="material-icons text-3xl text-green-500">shopping_bag</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
+                Eng Noyob <span class="text-green-500">To'plamlar</span> <br> Faqat Bizning Do'konda!
+            </h1>
+
+            <p class="text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 leading-relaxed">
+                Eski kemalar, sehrli toshlar va Marvel olami qahramonlari — barchasi hamyonbop narxlarda sizni kutmoqda.
+            </p>
+
+            {% if not request.user.is_authenticated %}
+                <div class="bg-zinc-800/50 backdrop-blur-sm p-6 rounded-2xl border border-zinc-700 inline-block">
+                    <p class="text-zinc-300 mb-4 font-medium text-sm">Mahsulotlarni ko'rish va xarid qilish uchun</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="{% url 'login' %}" class="bg-green-600 hover:bg-green-500 text-zinc-900 px-8 py-3 rounded-xl font-black transition-all transform hover:scale-105 shadow-lg shadow-green-600/20 text-sm">
+                            Tizimga Kirish
+                        </a>
+                        <a href="#" class="bg-zinc-700 hover:bg-zinc-600 text-white px-8 py-3 rounded-xl font-bold transition text-sm">
+                            Ro'yxatdan o'tish
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{% url 'products' %}" class="inline-flex items-center gap-3 bg-yellow-500 hover:bg-yellow-400 text-zinc-900 px-10 py-3 rounded-xl font-black transition-all transform hover:scale-105 shadow-xl shadow-yellow-500/30">
+                    <span class="material-icons text-xl">grid_view</span>
+                    Katalogni o'rganish
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 px-4">
+        <div class="flex items-center gap-3 p-3 bg-zinc-900/50 rounded-xl border border-zinc-800">
+            <span class="material-icons text-green-500 text-2xl">local_shipping</span>
+            <div>
+                <h4 class="text-white font-bold text-xs">Tezkor yetkazib berish</h4>
+                <p class="text-zinc-500 text-[10px]">O'zbekiston bo'ylab xizmatda</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-zinc-900/50 rounded-xl border border-zinc-800">
+            <span class="material-icons text-yellow-500 text-2xl">verified_user</span>
+            <div>
+                <h4 class="text-white font-bold text-xs">Sifat kafolati</h4>
+                <p class="text-zinc-500 text-[10px]">Faqat original mahsulotlar</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-zinc-900/50 rounded-xl border border-zinc-800">
+            <span class="material-icons text-blue-500 text-2xl">support_agent</span>
+            <div>
+                <h4 class="text-white font-bold text-xs">24/7 Qo'llab-quvvatlash</h4>
+                <p class="text-zinc-500 text-[10px]">Har doim aloqadamiz</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

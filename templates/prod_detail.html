@@ -1,0 +1,220 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<!--<div class="p-6 bg-zinc-800 min-h-screen flex items-center justify-center">-->
+<!--    <div class="max-w-5xl w-full bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl shadow-black/60 border border-zinc-700">-->
+
+<!--        <div class="lg:flex">-->
+<!--            -->
+<!--            <div class="lg:w-1/2 relative">-->
+<!--                {% if product.image %}-->
+<!--                    <img class="h-80 w-full object-cover lg:h-full lg:min-h-[500px]"-->
+<!--                         src="{{ product.image.url }}"-->
+<!--                         alt="{{ product.name }}">-->
+<!--                {% else %}-->
+<!--                    <div class="h-80 w-full bg-zinc-700 flex items-center justify-center lg:h-full">-->
+<!--                        <span class="text-zinc-500 text-lg">Rasm mavjud emas</span>-->
+<!--                    </div>-->
+<!--                {% endif %}-->
+
+<!--                &lt;!&ndash; Kategoriya belgisi &ndash;&gt;-->
+<!--                <span class="absolute top-4 left-4 bg-yellow-500 text-zinc-900 text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider">-->
+<!--                    {{ product.category.name }}-->
+<!--                </span>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Ma'lumot qismi &ndash;&gt;-->
+<!--            <div class="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-between">-->
+<!--                <div>-->
+<!--                    &lt;!&ndash; Orqaga qaytish havolasi &ndash;&gt;-->
+<!--                    <a href="javascript:history.back()" class="text-zinc-500 hover:text-yellow-500 flex items-center gap-2 mb-6 transition-colors duration-200">-->
+<!--                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />-->
+<!--                        </svg>-->
+<!--                        <span class="text-sm font-medium">Orqaga qaytish</span>-->
+<!--                    </a>-->
+
+<!--                    <h1 class="text-4xl font-extrabold text-zinc-100 leading-tight">-->
+<!--                        {{ product.name }}-->
+<!--                    </h1>-->
+
+<!--                    <div class="flex items-center gap-4 mt-4">-->
+<!--                        <p class="text-3xl font-black text-yellow-500">-->
+<!--                            {{ product.price }} <span class="text-xl font-normal text-yellow-500/80">$</span>-->
+<!--                        </p>-->
+<!--                        <span class="px-3 py-1 rounded-full text-xs font-semibold {% if product.in_stock > 0 %}bg-green-500/10 text-green-500{% else %}bg-red-500/10 text-red-500{% endif %}">-->
+<!--                            {% if product.in_stock > 0 %}-->
+<!--                                Omborda: {{ product.in_stock }} dona-->
+<!--                            {% else %}-->
+<!--                                Sotuvda yo'q-->
+<!--                            {% endif %}-->
+<!--                        </span>-->
+<!--                    </div>-->
+
+<!--                    <div class="mt-8">-->
+<!--                        <h3 class="text-zinc-100 font-bold mb-3 border-b border-zinc-800 pb-2">Mahsulot tavsifi</h3>-->
+<!--                        <p class="text-zinc-400 leading-relaxed text-lg">-->
+<!--                            {{ product.description|default:"Ushbu mahsulot haqida batafsil ma'lumot tez orada qo'shiladi." }}-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Harakat tugmalari &ndash;&gt;-->
+<!--                <div class="mt-10 flex gap-4">-->
+<!--                    {% if product.in_stock > 0 %}-->
+<!--                        <button class="flex-1 bg-yellow-500 hover:bg-yellow-400 text-zinc-900 font-bold py-4 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg shadow-yellow-500/20">-->
+<!--                            Savatga qo'shish-->
+<!--                        </button>-->
+<!--                    {% else %}-->
+<!--                        <button disabled class="flex-1 bg-zinc-700 text-zinc-500 font-bold py-4 rounded-xl cursor-not-allowed">-->
+<!--                            Tugagan-->
+<!--                        </button>-->
+<!--                    {% endif %}-->
+
+<!--                    <button class="p-4 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-100 rounded-xl transition-colors">-->
+<!--                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />-->
+<!--                        </svg>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+<!--<div class="mx-auto max-w-[1020px] grid grid-cols-12 mt-4 border-2 border-black shadow-lg shadow-green-500 rounded-2xl gap-10 relative">-->
+
+<!--    <a href="javascript:history.back()" -->
+<!--       class="absolute top-4 left-4 z-20 flex items-center justify-center w-10 h-10 bg-black/40 hover:bg-green-600 text-white rounded-full transition-all backdrop-blur-md border border-white/20">-->
+<!--        <span class="material-icons">arrow_back</span>-->
+<!--    </a>-->
+
+<!--    <img src="{{ product.image.url }}" alt="maxsulot surati" class="w-full h-[650px] col-span-6 rounded-2xl object-cover">-->
+<!--    -->
+<!--    <div class="col-span-6 flex flex-col gap-4">-->
+<!--        <div class="mt-8 ml-22 flex flex-col gap-4">-->
+<!--           <div class="flex flex-row gap-1">-->
+<!--                <button id="minus-btn" class="bg-green-500 text-white text-xl py-2 px-8 rounded-lg hover:cursor-pointer hover:bg-green-600 active:bg-green-700 transition active:scale-95"><span class="material-icons">remove</span></button>-->
+<!--                <input id="quantity-input" value="1" disabled type="text" class="max-w-[100px] text-center focus:outline-none text-blue-500 py-2 px-8 border-2 border-green-200 rounded-lg">-->
+<!--                <button id="plus-btn" class="bg-green-500 text-white text-xl py-2 px-8 rounded-lg hover:cursor-pointer hover:bg-green-600 active:bg-green-700 transition active:scale-95"><span class="material-icons">add</span></button>-->
+<!--           </div>-->
+
+<!--           <button class="max-w-72 flex flex-row gap-2 items-center justify-center bg-green-500 text-white text-xl py-2 px-8 rounded-lg hover:cursor-pointer hover:bg-green-600 active:bg-green-700 transition active:scale-95">-->
+<!--                SAVATGA QO'SHISH-->
+<!--               <span class="material-icons">shopping_cart</span>-->
+<!--           </button>-->
+<!--        </div>-->
+<!--        <h2 class="text-3xl text-green-500 ml-2">{{ product.name }}</h2>-->
+<!--        <p class="px-3 text-green-100">{{ product.description|linebreaksbr }}</p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="mx-auto max-w-[1020px] grid grid-cols-12 mt-4 border-2 border-black shadow-lg shadow-green-500 rounded-2xl gap-10 relative">
+
+    <a href="javascript:history.back()"
+       class="absolute top-4 left-4 z-20 flex items-center justify-center w-10 h-10 bg-black/40 hover:bg-green-600 text-white rounded-full transition-all backdrop-blur-md border border-white/20">
+        <span class="material-icons">arrow_back</span>
+    </a>
+
+
+    <img src="{{ product.image.url }}" alt="maxsulot surati" class="w-full h-[650px] col-span-6 rounded-2xl object-cover">
+
+
+    <div class="col-span-6 flex flex-col h-[650px] pr-2">
+        <form method="post" action="" class="mt-8 ml-22 flex flex-col gap-4 flex-none">
+            {% csrf_token %}
+           <div class="flex flex-row gap-1">
+                <button type="button" id="minus-btn" class="bg-green-500 text-white text-xl py-2 px-8 rounded-lg hover:cursor-pointer hover:bg-green-600 active:bg-green-700 transition active:scale-95"><span class="material-icons">remove</span></button>
+                <input name="quantity" id="quantity-input" value="1" type="text" class="max-w-[100px] text-center focus:outline-none text-blue-500 py-2 px-8 border-2 border-green-200 rounded-lg">
+                <button type="button" id="plus-btn" class="bg-green-500 text-white text-xl py-2 px-8 rounded-lg hover:cursor-pointer hover:bg-green-600 active:bg-green-700 transition active:scale-95"><span class="material-icons">add</span></button>
+           </div>
+
+           <button class="max-w-72 flex flex-row gap-2 items-center justify-center bg-green-500 text-white text-xl py-2 px-8 rounded-lg hover:cursor-pointer hover:bg-green-600 active:bg-green-700 transition active:scale-95">
+                SAVATGA QO'SHISH
+               <span class="material-icons">shopping_cart</span>
+           </button>
+        </form>
+
+
+        <div class="flex flex-row gap-4 ml-2 mt-6 flex-none">
+           <h2 class="text-3xl text-green-500 flex justify-between w-full pr-10">
+                <span>{{ product.name }}</span>
+                <span>{{ product.price }}$</span>
+           </h2>
+        </div>
+
+
+        <div class="overflow-y-auto flex-grow mt-4 mb-4 px-3">
+            <p class="text-green-100">{{ product.description|linebreaksbr }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // Elementlarni tanlab olamiz
+    const minusBtn = document.getElementById('minus-btn');
+    const plusBtn = document.getElementById('plus-btn');
+    const quantityInput = document.getElementById('quantity-input');
+
+    // Plus tugmasi bosilganda
+    plusBtn.addEventListener('click', () => {
+        let currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+    });
+
+    // Minus tugmasi bosilganda
+    minusBtn.addEventListener('click', () => {
+        let currentValue = parseInt(quantityInput.value);
+        // Miqdor 1 dan kamayib ketmasligi uchun tekshiruv
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+    });
+</script>
+
+{% if messages %}
+    <script>
+        {% for message in messages %}
+            Swal.fire({
+                position: "center",      // Oynani o'rtada chiqarish
+                icon: "{{ message.tags }}", // success, error, info
+                title: "{{ message }}",
+                showConfirmButton: false, // Tasdiqlash tugmasini yashirish
+                timer: 2000,             // 2000 millisekund = 2 soniya
+                timerProgressBar: true,  // Pastida vaqt ketayotganini ko'rsatuvchi chiziq
+                background: "#1a1a1a",   // To'q fon
+                color: "#22c55e",        // Yashil matn
+                iconColor: "#22c55e"     // Yashil belgi
+            });
+        {% endfor %}
+    </script>
+{% endif %}
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

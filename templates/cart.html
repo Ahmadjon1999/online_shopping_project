@@ -1,0 +1,73 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="max-w-[1200px] mx-auto px-4 py-10 text-white">
+    <h2 class="text-4xl font-bold mb-10 border-b border-green-500 pb-4 inline-block">Sizning Savatchangiz</h2>
+    
+    <div class="grid grid-cols-1 gap-6">
+        {% for product in products %}
+        <div class="flex flex-col md:flex-row items-center justify-between bg-zinc-900 border-2 border-black shadow-lg shadow-green-500/20 rounded-2xl p-6 gap-6 transition hover:shadow-green-500/40">
+            
+            <!-- Rasm va Asosiy ma'lumotlar -->
+            <div class="flex flex-row items-center gap-6 flex-1">
+                <img src="{{ product.product.image.url }}" class="w-32 h-32 object-cover rounded-xl border border-zinc-700">
+                
+                <div class="flex flex-col gap-1">
+                    <h3 class="text-2xl font-semibold text-yellow-400">{{ product.product.name }}</h3>
+                    <p class="text-zinc-400 text-sm max-w-md">{{ product.product.description|truncatechars:100 }}</p>
+                    <span class="text-xs text-zinc-500 mt-2 italic">Qo'shildi: {{ product.created|date:"d.m.Y H:i" }}</span>
+                </div>
+            </div>
+
+            <!-- Miqdor va Narxlar -->
+            <div class="flex flex-row items-center gap-10">
+                <div class="text-center">
+                    <p class="text-zinc-500 text-xs uppercase tracking-widest">Narxi</p>
+                    <p class="text-lg font-medium text-white">{{ product.product.price }} $</p>
+                </div>
+
+                <div class="text-center bg-zinc-800 px-4 py-2 rounded-lg border border-green-500/30">
+                    <p class="text-zinc-500 text-xs uppercase">Soni</p>
+                    <p class="text-xl font-bold text-green-400">{{ product.count }} ta</p>
+                </div>
+
+                <div class="text-center min-w-[100px]">
+                    <p class="text-zinc-500 text-xs uppercase">Umumiy</p>
+                    <p class="text-2xl font-bold text-yellow-500">{{ product.total_price }} $</p>
+                </div>
+
+                <!-- O'chirish tugmasi -->
+                <button class="text-red-400 hover:text-red-600 transition p-2">
+                    <a href="{% url 'delete_product' product_id=product.id %}"><span class="material-icons">delete_outline</span></a>
+                </button>
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-20 bg-zinc-900 rounded-3xl border-2 border-dashed border-zinc-700">
+            <span class="material-icons text-6xl text-zinc-600 mb-4">shopping_cart</span>
+            <p class="text-xl text-zinc-400">Savatchangiz hozircha bo'sh</p>
+            <a href="{% url 'products' %}" class="mt-6 inline-block bg-green-500 text-black px-8 py-3 rounded-full font-bold hover:bg-green-600 transition">Xaridni boshlash</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Savatcha yakuni (Total box) -->
+    {% if products %}
+    <div class="mt-10 flex justify-end">
+        <div class="bg-zinc-900 border-2 border-green-500 p-8 rounded-2xl min-w-[300px] shadow-2xl">
+            <div class="flex justify-between mb-4">
+                <span class="text-zinc-400">Jami mahsulotlar:</span>
+                <span class="font-bold">{{ products.count }} ta</span>
+            </div>
+            <div class="flex flex-row gap-2 justify-between border-t border-zinc-700 pt-4 mb-6">
+                <span class="text-xl">Umumiy to'lov:</span>
+                <span class="text-2xl font-extrabold text-green-400">$ {{ total_sum }}</span>
+            </div>
+            <button class="w-full bg-green-500 text-black font-black py-4 rounded-xl hover:bg-green-400 transition active:scale-95 shadow-lg shadow-green-500/20">
+                <a href="{% url 'buy' %}">SOTIB OLISH</a>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
