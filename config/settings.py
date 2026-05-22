@@ -1,6 +1,7 @@
 from pathlib import Path
 from environs import Env
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,14 +78,9 @@ if DEBUG:
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE'  :'django.db.backends.postgresql',
-            'DB_NAME' : env.str('DB_NAME'),
-            'DB_USER' : env.str('DB_USER'),
-            'DB_HOST' : env.str("DB_HOST"),
-            'DB_PORT' : env.int('DB_PORT'),
-            'PASSWORD': env.str('PASSWORD')
-        }
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL')
+        )
     }
 
 # Password validation
