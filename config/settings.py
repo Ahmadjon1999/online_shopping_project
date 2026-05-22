@@ -8,13 +8,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = Env()
 env.read_env()
 
-DEBUG = True
+DEBUG = False
 
 SECRET_KEY = env.str('SECRET_KEY')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 # AUTH_USER_MODEL = 'app_one.CustomUser'
 AUTH_USER_MODEL = 'app_one.User'
+
+CSRF_TRUSTED_ORIGINS = ['https://onlineshoppingproject-production.up.railway.app']
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
