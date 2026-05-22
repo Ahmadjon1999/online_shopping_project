@@ -12,7 +12,7 @@ DEBUG = env.bool('DEBUG', False)
 
 SECRET_KEY = env.str('SECRET_KEY')
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOST')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 # AUTH_USER_MODEL = 'app_one.CustomUser'
 AUTH_USER_MODEL = 'app_one.User'
 
