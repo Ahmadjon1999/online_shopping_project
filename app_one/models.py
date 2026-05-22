@@ -95,7 +95,7 @@ class Cart(models.Model):
 
 
 class Transaction(models.Model):
-    id = models.UUIDField(verbose_name="ID", primary_key=True, unique=True, editable=False, default=uuid4)
+  
     user = models.ForeignKey(verbose_name="Foydalanuvchi", to=User, on_delete=models.CASCADE)
     product_name = models.CharField(verbose_name="Maxsulot nomi", max_length=255)
     amount = models.DecimalField(verbose_name="Sariflangan pul miqdori", max_digits=12, decimal_places=2)
